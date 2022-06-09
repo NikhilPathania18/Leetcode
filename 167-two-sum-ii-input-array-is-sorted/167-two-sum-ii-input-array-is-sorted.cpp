@@ -15,7 +15,7 @@ public:
             {
                 j--;
             }
-            else if(numbers[i]+numbers[j]<target)
+            else
             {
                 i++;
             }
