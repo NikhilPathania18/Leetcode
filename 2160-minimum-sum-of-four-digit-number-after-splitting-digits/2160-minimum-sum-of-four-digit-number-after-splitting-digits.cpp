@@ -11,7 +11,6 @@ public:
         int num1,num2;
         num1=digits[1]*10+digits[2];
         num2=digits[0]*10+digits[3];
-        digits.clear();
         return num1+num2;
     }
 };
