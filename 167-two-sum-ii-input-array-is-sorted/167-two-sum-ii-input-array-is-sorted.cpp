@@ -12,16 +12,11 @@ public:
                 return numbers;
             }
             if(numbers[i]+numbers[j]>target)
-            {
                 j--;
-            }
             else
-            {
                 i++;
-            }
         }
         return numbers;
-        
     }
 };
 
