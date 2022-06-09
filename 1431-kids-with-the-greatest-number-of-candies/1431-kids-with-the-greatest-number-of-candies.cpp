@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
-        int fh=-1,sh=-1;
+        int fh=-1;
         for(int i=0;i<candies.size();i++)
         {
             if(candies[i]>fh)
