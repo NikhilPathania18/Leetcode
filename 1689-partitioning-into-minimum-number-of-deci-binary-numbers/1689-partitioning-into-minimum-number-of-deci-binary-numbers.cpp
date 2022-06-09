@@ -6,6 +6,8 @@ public:
         {
             if(n[i]>a)
                 a=n[i];
+            if(a=='9')
+                return 9;
         }
         return a-'0';
     }
