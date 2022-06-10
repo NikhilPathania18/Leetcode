@@ -20,10 +20,6 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
         if(root==NULL)
             return 0;
-        int o1=diameterOfBinaryTree(root->left);
-        int o2=diameterOfBinaryTree(root->right);
-        int o3=height(root->left)+height(root->right);
-        int ans=max(o1,max(o2,o3));
-        return ans;
+        return max(diameterOfBinaryTree(root->left),max(diameterOfBinaryTree(root->right),height(root->left)+height(root->right)));
     }
 };
