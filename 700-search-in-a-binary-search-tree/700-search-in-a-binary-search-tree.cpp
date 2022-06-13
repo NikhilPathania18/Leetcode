@@ -19,8 +19,10 @@ public:
         TreeNode* node=NULL;
         if(val<root->val)
             node=searchBST(root->left,val);
-        if(!node)
-            node=searchBST(root->right, val);
+        if(node)
+            return node;
+        
+        node=searchBST(root->right, val);
         return node;
     }
 };
