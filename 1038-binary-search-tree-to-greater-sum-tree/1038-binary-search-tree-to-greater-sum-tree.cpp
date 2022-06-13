@@ -11,22 +11,15 @@
  */
 class Solution {
 public:
-    int currSum=0;
-    int sum(TreeNode* root)
-    {
-        if(root==NULL)
-            return 0;
-        sum(root->right);
-        currSum+=root->val;
-        root->val=currSum;
-        sum(root->left);
-        return currSum;
-    }
+    int sum=0;
+    
     TreeNode* bstToGst(TreeNode* root) {
         if(root==NULL)
             return NULL;
-        sum(root);
+        bstToGst(root->right);
+        sum+=root->val;
+        root->val=sum;
+        bstToGst(root->left);
         return root;
-        
     }
 };
