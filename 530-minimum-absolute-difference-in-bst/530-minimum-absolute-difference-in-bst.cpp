@@ -28,7 +28,6 @@ public:
         {
             if(arr[i]-arr[i-1]<diff)
                 diff=arr[i]-arr[i-1];
-             
         }
         return diff;
     }
