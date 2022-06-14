@@ -1,15 +1,5 @@
 class Solution {
 public:
-    bool isP(string s)
-    {
-        int i=0,j=s.size()-1;
-        while(i<j)
-        {
-            if(s[i++]!=s[j--])
-                return false;
-        }
-        return true;
-    }
     bool isPalindrome(string s) {
         if(s.size()==1)
             return true;
@@ -25,6 +15,13 @@ public:
             }
             i++;
         }
-        return isP(s);
+        i=0;
+        int j=s.size()-1;
+        while(i<j)
+        {
+            if(s[i++]!=s[j--])
+                return false;
+        }
+        return true;
     }
 };
