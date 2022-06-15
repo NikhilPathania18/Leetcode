@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    double sum=0;
+    int sum=0;
     int noOfNodes=0;
     int ans=0;
     int avg;
