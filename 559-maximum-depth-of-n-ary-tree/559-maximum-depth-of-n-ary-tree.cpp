@@ -20,20 +20,17 @@ public:
 
 class Solution {
 public:
-    int getHeight(Node* root)
+    int maxDepth(Node* root)
     {
         if(root==NULL)
             return 0;
         int max=0;
         for(int i=0;i<root->children.size();i++)
         {
-            int h=getHeight(root->children[i]);
+            int h=maxDepth(root->children[i]);
             if(h>max)
                 max=h;
         }
         return max+1;
-    }
-    int maxDepth(Node* root) {
-        return getHeight(root);
     }
 };
