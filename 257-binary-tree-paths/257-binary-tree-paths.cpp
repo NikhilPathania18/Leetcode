@@ -31,9 +31,7 @@ public:
         s+=to_string(root->val);
         if(!root->left&!root->right)
             arr.push_back(s);
-        if(root->left)
         path(root->left,s);
-        if(root->right)
         path(root->right,s);
         return arr;
     }
