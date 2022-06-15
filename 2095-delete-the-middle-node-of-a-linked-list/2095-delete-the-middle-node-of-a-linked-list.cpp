@@ -21,6 +21,7 @@ public:
             second=second->next->next;
         }
         prev->next=first->next;
+        delete first;
         return head;
     }
 };
