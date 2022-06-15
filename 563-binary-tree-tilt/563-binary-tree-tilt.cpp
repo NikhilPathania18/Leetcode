@@ -22,23 +22,15 @@ public:
         if(root==NULL)
             return;
         root->val=abs(getSum(root->left)-getSum(root->right));
+        sum+=root->val;
         makeTilt(root->left);
         makeTilt(root->right);
-    }
-    void inorder(TreeNode* root)
-    {
-        if(root==NULL)
-            return;
-        inorder(root->left);
-        sum+=root->val;
-        inorder(root->right);
     }
     int findTilt(TreeNode* root)
     {
         if(root==NULL)
             return 0;
         makeTilt(root);
-        inorder(root);
         return sum;
     }
 };
