@@ -39,8 +39,7 @@ public:
     int sumNumbers(TreeNode* root) {
         if(root==NULL)
             return 0;
-        string s;
-        findSum(root,s);
+        findSum(root,"");
         return sum;
     }
 };
