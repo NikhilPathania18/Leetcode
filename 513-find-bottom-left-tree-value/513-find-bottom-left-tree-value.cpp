@@ -14,10 +14,10 @@ public:
     int findBottomLeftValue(TreeNode* root) {
         queue<TreeNode*> q;
         q.push(root);
-        TreeNode* temp;
+        int temp;
         while(!q.empty())
         {
-            temp=q.front();
+            temp=q.front()->val;
             int size=q.size();
             for(int i=0;i<size;i++)
             {
@@ -28,6 +28,6 @@ public:
                 q.pop();
             }
         }
-        return temp->val;
+        return temp;
     }
 };
