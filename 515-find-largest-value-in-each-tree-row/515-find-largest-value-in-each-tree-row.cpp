@@ -17,11 +17,11 @@ public:
         vector<int> arr;
         queue<TreeNode*> q;
         q.push(root);
-        int maxVal;
+        int maxVal,size;
         while(!q.empty())
         {
             maxVal=q.front()->val;
-            int size=q.size();
+            size=q.size();
             for(int i=0;i<size;i++)
             {
                 if(q.front()->val>maxVal)
