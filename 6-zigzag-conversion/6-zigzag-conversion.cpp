@@ -31,14 +31,15 @@ public:
                 arrPtr--;
             }
         }
-        string str;
+        
         for(int i=0;i<arr.size();i++)
         {
             for(int j=0;j<arr[i].size();j++)
             {
-                str.push_back(arr[i][j]);
+                s[sPtr]=arr[i][j];
+                sPtr++;
             }
         }
-        return str;
+        return s;
     }
 };
