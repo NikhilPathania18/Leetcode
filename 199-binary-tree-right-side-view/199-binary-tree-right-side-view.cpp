@@ -17,10 +17,12 @@ public:
         queue<TreeNode*> q;
         q.push(root);
         vector<int> arr;
+        TreeNode* temp;
+        int size;
         while(!q.empty())
         {
-            int size=q.size();
-            TreeNode* temp=q.front();
+            size=q.size();
+            temp=q.front();
             arr.push_back(temp->val);
             for(int i=0;i<size;i++)
             {
