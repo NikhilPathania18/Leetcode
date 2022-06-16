@@ -12,34 +12,15 @@
 class Solution {
 public:
     int sum=0;
-    int convertToInt(string s)
-    {
-        int j=s.size()-1;
-        int num=0;
-        while(j>=0)
-        {
-            num+=(s[j]-48)*pow(10,s.size()-j-1);
-            j--;
-        }
-        return num;
-    }
-    int findSum(TreeNode* root,string num)
-    {
+    int sumNumbers(TreeNode* root,int val=0) {
         if(root==NULL)
             return 0;
-        num+=to_string(root->val);
+        val*=10;
+        val+=root->val;
         if(!root->left&&!root->right)
-        {
-            sum+=convertToInt(num);
-        }
-        findSum(root->left,num);
-        findSum(root->right,num);
-        return root->val;
-    }
-    int sumNumbers(TreeNode* root) {
-        if(root==NULL)
-            return 0;
-        findSum(root,"");
+            sum+=val;
+        sumNumbers(root->left,val);
+        sumNumbers(root->right,val);
         return sum;
     }
 };
