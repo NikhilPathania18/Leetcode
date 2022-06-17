@@ -11,35 +11,27 @@
  */
 class Solution {
 public:
-    int sum=0;
     int noOfNodes=0;
-    int ans=0;
-    int avg;
-    void inorder(TreeNode* root)
+    pair<int,int> average(TreeNode* root)
     {
         if(root==NULL)
-            return;
-        inorder(root->left);
-        sum+=root->val;
-        noOfNodes++;
-        inorder(root->right);
-    }
-    int getAvg(TreeNode* root)
-    {
-        sum=0;
-        noOfNodes=0;
-        inorder(root);
-        avg=sum/noOfNodes;
-        return avg;
+            return make_pair(0,0);
+        int sum=0;
+        pair<int,int> p1,p2;
+        p1=average(root->left);
+        p2=average(root->right);
+        sum=root->val+p1.first+p2.first;
+        int nodes=0;
+        nodes=1+p1.second+p2.second;
+        if(sum/nodes==root->val)
+            noOfNodes++;
+        return make_pair(sum,nodes);
     }
     int averageOfSubtree(TreeNode* root)
     {
         if(root==NULL)
             return 0;
-        if(root->val==getAvg(root))
-            ans++;
-        averageOfSubtree(root->left);
-        averageOfSubtree(root->right);
-        return ans;
+        average(root);
+        return noOfNodes;
     }
 };
