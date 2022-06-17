@@ -11,21 +11,15 @@
  */
 class Solution {
 public:
-    vector<int> arr;
-    void BST(TreeNode* root) {
+    bool isValid(TreeNode* root,TreeNode* l,TreeNode* r)
+    {
         if(root==NULL)
-            return ;
-        BST(root->left);
-        arr.push_back(root->val);
-        BST(root->right);
+            return true;
+        if((l&&root->val<=l->val)||(r&&root->val>=r->val))
+            return false;
+        return isValid(root->left,l,root)&&isValid(root->right,root,r);
     }
     bool isValidBST(TreeNode* root) {
-        BST(root);
-        for(int i=0;i<arr.size()-1;i++)
-        {
-            if(arr[i+1]<=arr[i])
-                return false;
-        }
-        return true;
+        return isValid(root,NULL,NULL);
     }
 };
