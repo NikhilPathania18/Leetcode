@@ -11,15 +11,11 @@
  */
 class Solution {
 public:
-    bool isValid(TreeNode* root,TreeNode* l,TreeNode* r)
-    {
+    bool isValidBST(TreeNode* root,TreeNode* l=NULL,TreeNode* r=NULL) {
         if(root==NULL)
             return true;
         if((l&&root->val<=l->val)||(r&&root->val>=r->val))
             return false;
-        return isValid(root->left,l,root)&&isValid(root->right,root,r);
-    }
-    bool isValidBST(TreeNode* root) {
-        return isValid(root,NULL,NULL);
+        return isValidBST(root->left,l,root)&&isValidBST(root->right,root,r);
     }
 };
