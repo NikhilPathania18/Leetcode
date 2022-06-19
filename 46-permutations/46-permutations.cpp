@@ -36,9 +36,9 @@ public:
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<int> arr;
+        // vector<int> arr;
         vector<vector<int>> ans;
-        vector<bool> isTaken(nums.size(),false);
+        // vector<bool> isTaken(nums.size(),false);
         // perm(nums,arr,0,isTaken,ans);
         perm2(nums,0,ans);
         return ans;
