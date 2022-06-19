@@ -15,12 +15,8 @@ public:
         
         if(target<0)
             return;
-        
         arr.push_back(candidates[index]);
         comb(candidates,arr,index,target-candidates[index]);
-        // arr.pop_back();
-        // arr.push_back(candidates[index+1]);
-        // comb(candidates,arr,index+1,target-candidates[index+1]);
         arr.pop_back();
         comb(candidates,arr,index+1,target);
     }
