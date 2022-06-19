@@ -6,8 +6,7 @@ using namespace std;
 class Solution
 {
 public:
-vector<int> ans;
-    void sum(vector<int> &nums,vector<int> &arr,int index,int s)
+    void sum(vector<int> &nums,vector<int> &arr,int index,int s,vector<int> &ans)
     {
         if(index==nums.size())
         {
@@ -16,15 +15,17 @@ vector<int> ans;
         }
         
         arr.push_back(nums[index]);
-        sum(nums,arr,index+1,s+nums[index]);
+        sum(nums,arr,index+1,s+nums[index],ans);
         arr.pop_back();
-        sum(nums,arr,index+1,s);
+        sum(nums,arr,index+1,s,ans);
     }
     vector<int> subsetSums(vector<int> arr, int N)
     {
         // Write Your Code here
         vector<int> ds;
-        sum(arr,ds,0,0);
+        vector<int> ans;
+        sum(arr,ds,0,0,ans);
+        
         sort(ans.begin(),ans.end());
         return ans;
     }
