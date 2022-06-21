@@ -22,19 +22,19 @@ public:
     }
     string sN(int n)
     {
-    //     if(n==1)
-    //         return "0";
-    //     string s=sN(n-1);
-    //     return s+"1"+invertNreverse(s);
+        if(n==1)
+            return "0";
+        string s=sN(n-1);
+        return s+"1"+invertNreverse(s);
         
         
-        vector<string> dp(n);
-        dp[0]="0";
-        for(int i=1;i<n;i++)
-        {
-            dp[i]=dp[i-1]+"1"+invertNreverse(dp[i-1]);
-        }
-        return dp[n-1];
+        // vector<string> dp(n);
+        // dp[0]="0";
+        // for(int i=1;i<n;i++)
+        // {
+        //     dp[i]=dp[i-1]+"1"+invertNreverse(dp[i-1]);
+        // }
+        // return dp[n-1];
     }
     char findKthBit(int n, int k) {
         string sNth=sN(n);
