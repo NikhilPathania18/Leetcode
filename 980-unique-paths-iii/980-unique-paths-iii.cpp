@@ -13,10 +13,10 @@ public:
                     if(grid[i][j]==-1)
                         continue;
                     if(hasMoved[i][j]==false)
-                        return 0;
+                        return 0;                   //It means all blocks are not moved
                 }
             }
-            return 1;
+            return 1;                               // All blocks are moved
         }
         
         int up,left,down,right;
