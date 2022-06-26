@@ -1,22 +1,6 @@
 class Solution {
 public:
-    bool solve(vector<int>& arr,int n,int k)
-    {
-        if(k==0)
-            return true;
-        if(n==0)
-        {
-            if(arr[0]==k)
-                return true;
-            else
-                return false;
-        }
-        bool take=false;
-        if(arr[n]<=k)
-            take=solve(arr,n-1,k-arr[n]);
-        bool notTake=solve(arr,n-1,k);
-        return take||notTake;
-    }
+    
     bool canPartition(vector<int>& arr) {
         int n=arr.size();
         if(n==1)
