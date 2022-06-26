@@ -23,8 +23,17 @@ public:
                 bool take=false;
                 if(arr[i]<=j)
                     take=dp[i-1][j-arr[i]];
-                bool notTake=dp[i-1][j];
-                dp[i][j]=take||notTake;
+                if(take)
+                {
+                    dp[i][j]=true;
+                    continue;
+                }
+                if(dp[i-1][j])
+                {
+                    dp[i][j]=true;
+                    continue;
+                }
+                dp[i][j]=false;
             }
         }
         return dp[n-1][k];
