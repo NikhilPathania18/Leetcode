@@ -5,6 +5,7 @@ public:
         reverse(t.begin(),t.end());
         int m=s.size();
         vector<vector<int>> dp(m+1,vector<int>(m+1,0));
+        
         for(int i=1;i<=m;i++)
         {
             for(int j=1;j<=m;j++)
