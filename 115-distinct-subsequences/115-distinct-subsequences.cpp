@@ -20,9 +20,9 @@ public:
         vector<double> prev(n+1,0);
         vector<double> curr(n+1,0);
        
+        prev[0]=curr[0]=1;
         for(int i=1;i<=m;i++)
         {
-            prev[0]=1;
             for(int j=1;j<=n;j++)
             {
                 if(s[i-1]==t[j-1])
