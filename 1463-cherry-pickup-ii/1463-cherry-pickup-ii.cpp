@@ -26,7 +26,7 @@ public:
     }
     int cherryPickup(vector<vector<int>>& grid) {
         int m=grid.size(),n=grid[0].size();
-        vector<vector<vector<int>>> dp(m,vector<vector<int>>(n,vector<int>(n,-1)));
+        vector<vector<vector<int>>> dp(m,vector<vector<int>>(n,vector<int>(n)));
         for(int c1=0;c1<n;c1++)
         {
             for(int c2=0;c2<n;c2++)
@@ -37,7 +37,6 @@ public:
                     dp[m-1][c1][c2]=grid[m-1][c1]+grid[m-1][c2];
             }
         }
-        
         for(int row=m-2;row>=0;row--)
         {
             for(int c1=0;c1<n;c1++)
