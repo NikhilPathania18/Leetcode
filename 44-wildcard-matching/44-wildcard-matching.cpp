@@ -31,7 +31,6 @@ public:
                 if(p[j-1]!='*')
                     dp[0][i]=false;
         }
-        
         for(int i=1;i<=m;i++)
         {
             for(int j=1;j<=n;j++)
