@@ -11,8 +11,7 @@
  */
 class Solution {
 public:
-    int maxLevel=0;
-    vector<int> rightView(vector<int>& ans,TreeNode* root,int currLevel)
+    vector<int> rightView(vector<int>& ans,TreeNode* root,int currLevel,int &maxLevel)
     {
         if(root==NULL)
             return {};
@@ -21,8 +20,8 @@ public:
             ans.push_back(root->val);
             maxLevel=currLevel;
         }
-        rightView(ans,root->right,currLevel+1);
-        rightView(ans,root->left,currLevel+1);
+        rightView(ans,root->right,currLevel+1,maxLevel);
+        rightView(ans,root->left,currLevel+1,maxLevel);
         return ans;
         
     }
@@ -30,7 +29,8 @@ public:
         if(root==NULL)
             return {};
         vector<int> ans;
-        return rightView(ans,root,1);
+        int maxLevel=0;
+        return rightView(ans,root,1,maxLevel);
         
         
         // queue<TreeNode*> q;
