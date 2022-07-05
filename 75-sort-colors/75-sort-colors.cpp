@@ -1,8 +1,6 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        return;
         int size=nums.size();
         int start=0,mid=0,end=size-1;
         while(mid<=end)
