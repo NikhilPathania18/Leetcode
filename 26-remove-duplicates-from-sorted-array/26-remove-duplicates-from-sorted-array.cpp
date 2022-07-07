@@ -7,9 +7,8 @@ public:
         {
             if(nums[next]==nums[curr])  next++;
             else{
-                nums[curr+1]=nums[next];
+                nums[++curr]=nums[next];
                 next++;
-                curr++;
             }
         }
         return curr+1;
