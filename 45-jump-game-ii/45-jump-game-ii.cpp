@@ -16,7 +16,23 @@ public:
     }
     int jump(vector<int>& nums) {
         int n=nums.size();
-        vector<int> dp(n,-1);
-        return minJumps(nums,0,n-1,dp);
+        vector<int> dp(n);
+        dp[n-1]=0;
+        for(int index=n-2;index>=0;index--)
+        {
+            int minSteps=1e9;
+            int steps=0;
+            for(int i=1;i<=nums[index];i++)
+            {
+                if(index+i<n)
+                {
+                    steps=dp[index+i]+1;
+                    minSteps=min(minSteps,steps);
+                }
+                
+            }
+            dp[index]=minSteps;
+        }
+        return dp[0];
     }
 };
