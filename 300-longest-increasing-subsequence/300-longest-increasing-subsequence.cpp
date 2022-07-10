@@ -24,7 +24,7 @@ public:
                 size++;
             }
             else
-            {
+            { 
                 int index=getIndex(arr,nums[i]);
                 arr[index]=nums[i];
             }
