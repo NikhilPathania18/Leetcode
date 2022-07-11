@@ -11,7 +11,7 @@
  */
 class FindElements {
 public:
-    TreeNode* head=NULL;
+    map<int,int> values;
     void recover(TreeNode* root)
     {
         if(root==NULL)
@@ -20,12 +20,12 @@ public:
             root->left->val=(2*root->val)+1;
         if(root->right)
             root->right->val=(2*root->val)+2;
+        values[root->val]++;
         recover(root->left);
         recover(root->right);
     }
     FindElements(TreeNode* root) {
         root->val=0;
-        head=root;
         recover(root);
     }
     
@@ -37,7 +37,7 @@ public:
         return ifExist(root->left,target)||ifExist(root->right,target);
     }
     bool find(int target) {
-        return ifExist(head,target);
+        return values[target];
     }
 };
 
