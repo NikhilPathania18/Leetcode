@@ -22,7 +22,7 @@ public:
             min2=min1;
             min1=root->val;
         }
-        else if(min2==-1||(root->val!=min1&&root->val<min2))
+        else if(min2==-1||root->val<min2)
         {
             if(root->val!=min1)
                 min2=root->val;
