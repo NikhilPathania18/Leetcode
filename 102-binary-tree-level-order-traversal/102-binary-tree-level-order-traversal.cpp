@@ -11,27 +11,27 @@
  */
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> result;
+    int maxDepth=-1;
+    void preorder(TreeNode* root,vector<vector<int>>& ans,int depth)
+    {
         if(root==NULL)
-            return result;
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty())
+            return;
+        if(depth>maxDepth)
         {
-            int size=q.size();
-            vector<int> ans;
-            for(int i=0;i<size;i++)
-            {
-                ans.push_back(q.front()->val);
-                if(q.front()->left)
-                    q.push(q.front()->left);
-                if(q.front()->right)
-                    q.push(q.front()->right);
-                q.pop();
-            }
-            result.push_back(ans);
+            ans.push_back({root->val});
+            maxDepth++;
         }
-        return result;
+        else
+        {
+            ans[depth].push_back(root->val);
+        }
+        preorder(root->left,ans,depth+1);
+        preorder(root->right,ans,depth+1);
+        
+    }
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        preorder(root,ans,0);
+        return ans;
     }
 };
