@@ -35,6 +35,5 @@ public:
             if(i.second==maxl)
                 result.push_back(i.first);
         return result;
-        
     }
 };
