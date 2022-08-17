@@ -22,13 +22,30 @@ public:
         }
         return true;
     }
+    bool dfs(vector<vector<int>>& adj,vector<int>& visited,int index)
+    {
+        for(int i=0;i<adj[index].size();i++)
+        {
+            if(visited[adj[index][i]]==-1)
+            {
+                if(visited[index]==0)
+                    visited[adj[index][i]]=1;
+                else visited[adj[index][i]]=0;
+                if(!dfs(adj,visited,adj[index][i])) return false;
+            }
+            else if(visited[adj[index][i]]==visited[index])
+                return false;
+        }
+        return true;
+    }
     bool isBipartite(vector<vector<int>>& graph) {
         vector<int> visited(graph.size(),-1);
         for(int i=0;i<graph.size();i++)
         {
             if(visited[i]==-1)
             {
-                if(!bfs(graph,visited,i)) return false;
+                visited[i]=0;
+                if(!dfs(graph,visited,i)) return false;
             }
         }
         return true;
