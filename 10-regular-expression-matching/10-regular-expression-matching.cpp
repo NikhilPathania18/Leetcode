@@ -30,39 +30,40 @@ public:
 //     }
 //         return false;
 //     }
-    bool check(string& s,string &p,int index1,int index2)
+    int check(string& s,string &p,int index1,int index2,vector<vector<int>> &dp)
     {
-        if(index1<0&&index2<0)  return true;
-        if(index2<0&&index1>=0) return false;
+        if(index1<0&&index2<0)  return 1;
+        if(index2<0&&index1>=0) return 0;
         if(index1<0&&index2>=0)
         {
-            if(index2%2==0)    return false;
+            if(index2%2==0)    return 0;
             for(int i=0;i<=index2;i++)
             {
                 if(i+1<=index2&&p[i+1]!='*')
-                    return false;
+                    return 0;
                 i++;
             }
-            return true;
+            return 1;
         }
-        
+        if(dp[index1][index2]!=-1)  return dp[index1][index2];
         if(p[index2]=='.'||p[index2]==s[index1])
-            return check(s,p,index1-1,index2-1);
+            return dp[index1][index2]=check(s,p,index1-1,index2-1,dp);
         if(p[index2]=='*')
         {
             bool with0=false,withMore=false;
-            with0=check(s,p,index1,index2-2);
+            with0=check(s,p,index1,index2-2,dp);
             if(s[index1]==p[index2-1]||p[index2-1]=='.')
-                withMore=check(s,p,index1-1,index2);
-            return with0||withMore;
+                withMore=check(s,p,index1-1,index2,dp);
+            return dp[index1][index2]=with0||withMore;
         }
-        return false;
+        return dp[index1][index2]=0;
     }
     bool isMatch(string s, string p) {
         
         int m=s.size(),n=p.size();
-        return check(s,p,m-1,n-1);
-        vector<vector<bool>> dp(m+1,vector<bool>(n+1,true));
+        vector<vector<int>> dp(m,vector<int>(n,-1));
+        return check(s,p,m-1,n-1,dp);
+        
         for(int i=1;i<=m;i++)
             dp[i][0]=false;
         for(int i=1;i<=n;i++)
@@ -91,7 +92,4 @@ public:
         }
         return dp[m][n];
     }
-    // "aab"
-    // "c*a*b"
-    //should be true
 };
