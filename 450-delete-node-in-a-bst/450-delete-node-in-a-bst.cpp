@@ -17,13 +17,13 @@ public:
             root=root->left;
         return root;
     }
-    TreeNode *deleteNodeInBST(TreeNode* root,int key)
+    TreeNode *deleteNode(TreeNode* root,int key)
     {
         if(!root)   return NULL;
         if(key<root->val)
-            root->left=deleteNodeInBST(root->left,key);
+            root->left=deleteNode(root->left,key);
         else if(key>root->val)
-            root->right=deleteNodeInBST(root->right,key);
+            root->right=deleteNode(root->right,key);
         else
         {
             if(!root->left&&!root->right)   return NULL;
@@ -31,11 +31,9 @@ public:
             if(root->right&&!root->left)    return root->right;
             TreeNode* temp=inorder(root->right);
             root->val=temp->val;
-            root->right=deleteNodeInBST(root->right,temp->val);
+            root->right=deleteNode(root->right,temp->val);
         }
         return root;
     }
-    TreeNode* deleteNode(TreeNode* root, int key) {
-        return deleteNodeInBST(root,key);
-    }
+    
 };
