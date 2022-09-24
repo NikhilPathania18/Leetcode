@@ -13,7 +13,7 @@ class Solution {
 public:
     vector<vector<int>> arr;
     int tSum;
-    void sumLeaf(TreeNode* root,vector<int> values,int sum)
+    void sumLeaf(TreeNode* root,vector<int> &values,int sum)
     {
         if(root==NULL)
             return ;
@@ -21,10 +21,12 @@ public:
         {
             values.push_back(root->val);
             arr.push_back(values);
+            values.pop_back();
         }
         values.push_back(root->val);
         sumLeaf(root->left,values,sum-root->val);
         sumLeaf(root->right,values,sum-root->val);
+        values.pop_back();
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         if(root==NULL)
