@@ -1,39 +1,24 @@
 class Solution {
 public:
-    int minDist(string &s,string &t,int i1,int i2,vector<vector<int>>& dp)
+    int solve(string &word1,string& word2,int index1,int index2,vector<vector<int>>& dp)
     {
-        if(i1<0||i2<0)
-            return dp[i1+1][i2+1]=abs(i1-i2);
-        if(dp[i1+1][i2+1]!=-1)
-            return dp[i1+1][i2+1];
-        if(s[i1]==t[i2])
-            return dp[i1+1][i2+1]=minDist(s,t,i1-1,i2-1,dp);
-        int insert=1+minDist(s,t,i1,i2-1,dp);
-        int del=1+minDist(s,t,i1-1,i2,dp);
-        int replace=1+minDist(s,t,i1-1,i2-1,dp);
-        return dp[i1+1][i2+1]=min(insert,min(del,replace));
+        if(index1<0&&index2<0)  return 0;
+        
+        if(index2<0)   return index1+1;
+        if(index1<0)   return index2+1;
+        if(dp[index1][index2]!=-1)  return dp[index1][index2];
+        int insert=0,del=0,replace=0;
+        if(word1[index1]==word2[index2])
+            return dp[index1][index2]=solve(word1,word2,index1-1,index2-1,dp);
+        
+        insert=1+solve(word1,word2,index1,index2-1,dp);
+        del=1+solve(word1,word2,index1-1,index2,dp);
+        replace=1+solve(word1,word2,index1-1,index2-1,dp);
+        return dp[index1][index2]=min(insert,min(del,replace));
     }
     int minDistance(string word1, string word2) {
         int m=word1.size(),n=word2.size();
-        vector<vector<int>> dp(m+1,vector<int>(n+1));
-        for(int i=0;i<=n;i++)   dp[0][i]=i;
-        for(int j=0;j<=m;j++)   dp[j][0]=j;
-        
-        for(int i=1;i<=m;i++)
-        {
-            for(int j=1;j<=n;j++)
-            {
-                if(word1[i-1]==word2[j-1])
-                    dp[i][j]=dp[i-1][j-1];
-                else
-                {
-                    int insert=1+dp[i][j-1];
-                    int del=1+dp[i-1][j];
-                    int replace=1+dp[i-1][j-1];
-                    dp[i][j]=min(insert,min(del,replace));
-                }
-            }
-        }
-        return dp[m][n];
+        vector<vector<int>> dp(m,vector<int>(n,-1));
+        return solve(word1,word2,m-1,n-1,dp);
     }
 };
